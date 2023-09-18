@@ -19,6 +19,6 @@ output "url" {
 }
 
 output "bucket" {
-  value       = one(google_storage_bucket.bucket)
+  value       = join(google_storage_bucket.bucket)
   description = "All attributes of the created `google_storage_bucket` resource."
 }

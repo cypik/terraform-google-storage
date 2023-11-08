@@ -46,34 +46,16 @@ variable "force_destroy" {
   description = " (Optional, Default: false) When deleting a bucket, this boolean option will delete all contained objects"
 }
 
-variable "project_id" {
-  type        = string
-  default     = "opz0-397319"
-  description = "(Optional) The ID of the project in which the resource belongs. If it is not provided, the provider project is used."
-}
-
 variable "storage_class" {
   type        = string
   default     = "STANDARD"
   description = " (Optional, Default: 'STANDARD') The Storage Class of the new bucket. Supported values include: STANDARD, MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE."
 }
 
-variable "autoclass" {
-  type        = bool
-  default     = true
-  description = "(Optional) The bucket's Autoclass configuration."
-}
-
 variable "versioning" {
   type        = bool
   default     = true
   description = "(Optional) The bucket's Versioning configuration. "
-}
-
-variable "website" {
-  type        = map(any)
-  default     = null
-  description = "Map of website values. Supported attributes: main_page_suffix, not_found_page"
 }
 
 variable "default_event_based_hold" {
@@ -112,12 +94,6 @@ variable "lifecycle_rules" {
   description = "The bucket's Lifecycle Rules configuration."
 }
 
-variable "google_storage_bucket_iam_member_enabled" {
-  type        = bool
-  default     = true
-  description = "Set to false to prevent the module from creating any resources."
-}
-
 variable "requester_pays" {
   type        = bool
   default     = false
@@ -130,22 +106,10 @@ variable "uniform_bucket_level_access" {
   description = "(Optional, Default: false) Enables Uniform bucket-level access access to a bucket."
 }
 
-variable "custom_placement_config" {
-  type        = list(any)
-  default     = []
-  description = " (Optional) The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty."
-}
-
 variable "public_access_prevention" {
   type        = string
   default     = "inherited"
   description = " (Optional) Prevents public access to a bucket. Acceptable values are [inherited] or [enforced]. "
-}
-
-variable "bucket_id" {
-  type        = string
-  default     = ""
-  description = "Used to find the parent resource to bind the IAM policy to"
 }
 
 variable "labels" {

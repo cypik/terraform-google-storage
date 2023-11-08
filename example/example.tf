@@ -7,13 +7,10 @@ provider "google" {
 #####==============================================================================
 ##### bucket_logs module call .
 #####==============================================================================
-
 module "bucket_logs" {
   source      = "./../"
-  name        = "bukcet_logs"
-  environment = "test-bukcet"
-  label_order = ["name", "environment"]
-  project_id  = "opz0-397319"
+  name        = "app-logs"
+  environment = "test"
   location    = "asia"
 }
 
@@ -21,19 +18,11 @@ module "bucket_logs" {
 ##### bucket module call .
 #####==============================================================================
 module "bucket" {
-  source                                   = "./../"
-  name                                     = "app-bucket"
-  environment                              = "test"
-  label_order                              = ["name", "environment"]
-  project_id                               = "opz0-397319"
-  google_storage_bucket_iam_member_enabled = true
-  location                                 = "asia"
-  bucket_id                                = module.bucket.id
+  source      = "./../"
+  name        = "appsss"
+  environment = "test"
+  location    = "asia"
 
-  website = {
-    main_page_suffix = "index.html"
-    not_found_page   = "404.html"
-  }
   #logging
   logging = {
     log_bucket        = module.bucket_logs.id
@@ -67,5 +56,4 @@ module "bucket" {
       noncurrent_time_before     = "1970-01-01"
     }
   }]
-
 }

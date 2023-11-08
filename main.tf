@@ -1,6 +1,5 @@
 module "labels" {
-  source = "git::git@github.com:opz0/terraform-gcp-labels.git?ref=master"
-
+  source      = "git::https://github.com/opz0/terraform-gcp-labels.git?ref=v1.0.0"
   name        = var.name
   environment = var.environment
   label_order = var.label_order
@@ -8,13 +7,18 @@ module "labels" {
   repository  = var.repository
 }
 
+data "google_client_config" "current" {
+}
+
 #####==============================================================================
 ##### Creates a new bucket in Google cloud storage service (GCS).
 #####==============================================================================
+#tfsec:ignore:google-storage-bucket-encryption-customer-key
+#tfsec:ignore:google-storage-enable-ubla
 resource "google_storage_bucket" "bucket" {
   count                       = var.enabled ? 1 : 0
-  name                        = module.labels.id
-  project                     = var.project_id
+  name                        = format("%s-bucket", module.labels.id)
+  project                     = data.google_client_config.current.project
   location                    = var.location
   labels                      = var.labels
   force_destroy               = var.force_destroy
@@ -60,6 +64,7 @@ resource "google_storage_bucket" "bucket" {
     }
   }
 
+
   versioning {
     enabled = var.versioning
   }
@@ -87,6 +92,3 @@ resource "google_storage_bucket" "bucket" {
     }
   }
 }
-
-
-

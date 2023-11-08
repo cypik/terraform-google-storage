@@ -13,7 +13,7 @@ output "url" {
   description = "The base URL of the bucket, in the format gs://<bucket-name>"
 }
 
-output "bucket" {
-  value       = module.bucket.bucket
+output "name" {
+  value       = module.bucket.name
   description = "All attributes of the created `google_storage_bucket` resource."
 }

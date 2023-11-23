@@ -15,7 +15,7 @@ To use this module, you should have Terraform installed and configured for GCP. 
 # Example: storage
 ```hcl
 module "bucket_logs" {
-  source      = "git::https://github.com/opz0/terraform-gcp-storage.git?ref=v1.0.0"
+  source      = "git::https://github.com/cypik/terraform-gcp-storage.git?ref=v1.0.0"
   name        = "logs"
   environment = "test"
   location    = "asia"
@@ -23,7 +23,7 @@ module "bucket_logs" {
 
 # bucket with rules.
 module "bucket" {
-  sourc       = "git::https://github.com/opz0/terraform-gcp-storage.git?ref=v1.0.0"
+  sourc       = "git::https://github.com/cypik/terraform-gcp-storage.git?ref=v1.0.0"
   name        = "app"
   environment = "test"
   location    = "asia"
@@ -85,10 +85,10 @@ Each module may have specific outputs. You can retrieve these outputs by referen
 - 'name' : All attributes of the created `google_storage_bucket` resource.
 
 ## Examples
-For detailed examples on how to use this module, please refer to the 'examples' directory within this repository.
+For detailed examples on how to use this module, please refer to the '[examples](https://github.com/cypik/terraform-gcp-storage/blob/master/example)' directory within this repository.
 
 ## Author
 Your Name Replace '[License Name]' and '[Your Name]' with the appropriate license and your information. Feel free to expand this README with additional details or usage instructions as needed for your specific use case.
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/opz0/terraform-gcp-storage/blob/master/LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/cypik/terraform-gcp-storage/blob/master/LICENSE) file for details.

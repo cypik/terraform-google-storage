@@ -19,12 +19,12 @@ variable "label_order" {
 variable "managedby" {
   type        = string
   default     = ""
-  description = "ManagedBy, eg 'Opz0'."
+  description = "ManagedBy, eg 'cypik'."
 }
 
 variable "repository" {
   type        = string
-  default     = ""
+  default     = "https://github.com/cypik/terraform-gcp-storage"
   description = "Terraform current module repo"
 }
 
@@ -115,5 +115,5 @@ variable "public_access_prevention" {
 variable "labels" {
   type        = map(any)
   default     = {}
-  description = "ManagedBy eg 'Opz0'."
+  description = "ManagedBy eg 'cypik'."
 }

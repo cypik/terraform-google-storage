@@ -1,4 +1,4 @@
-# terraform-gcp-storage
+# Terraform-gcp-storage
 # Google Cloud Infrastructure Provisioning with Terraform
 ## Table of Contents
 
@@ -9,10 +9,10 @@
 - [License](#license)
 
 ## Introduction
-This project deploys a Google Cloud infrastructure using Terraform to create STORAGE .
+This project deploys a Google Cloud infrastructure using Terraform to create **STORAGE** .
 ## Usage
 To use this module, you should have Terraform installed and configured for GCP. This module provides the necessary Terraform configuration for creating GCP resources, and you can customize the inputs as needed. Below is an example of how to use this module:
-# Example: storage
+# Example: _storage_
 ```hcl
 module "bucket_logs" {
   source      = "git::https://github.com/cypik/terraform-gcp-storage.git?ref=v1.0.0"
@@ -67,28 +67,28 @@ This example demonstrates how to create various GCP resources using the provided
 
 ## Module Inputs
 
-- 'name'  : The name of the service account.
-- 'environment': The environment type.
-- 'project_id' : The GCP project ID.
-- 'location': The GCS location.
-- 'website': Configuration if the bucket acts as a website.
-- 'logging' : The bucket's Access & Storage Logs configuration.
-- 'versioning' :The bucket's Versioning configuration.
-- 'condition' : The Lifecycle Rule's condition configuration.
+- `name`  : The name of the service account.
+- `environment` : The environment type.
+- `project_id` : The GCP project ID.
+- `location` : The GCS location.
+- `website` : Configuration if the bucket acts as a website.
+- `logging` : The bucket's Access & Storage Logs configuration.
+- `versioning` :The bucket's Versioning configuration.
+- `condition` : The Lifecycle Rule's condition configuration.
 
 ## Module Outputs
 Each module may have specific outputs. You can retrieve these outputs by referencing the module in your Terraform configuration.
 
-- 'id' : The ID of the s3 bucket.
-- 'url' : The base URL of the bucket, in the format gs://<bucket-name>
-- 'self_link': URI of the GCS bucket.
-- 'name' : All attributes of the created `google_storage_bucket` resource.
+- `id` : The ID of the s3 bucket.
+- `url` : The base URL of the bucket, in the format `gs://<bucket-name>`
+- `self_link` : URI of the GCS bucket.
+- `name` : All attributes of the created `google_storage_bucket` resource.
 
 ## Examples
-For detailed examples on how to use this module, please refer to the '[examples](https://github.com/cypik/terraform-gcp-storage/blob/master/example)' directory within this repository.
+    For detailed examples on how to use this module, please refer to the [EXAMPLE](https://github.com/cypik/terraform-gcp-storage/tree/master/example) directory within this repository.
 
 ## Author
-Your Name Replace '[License Name]' and '[Your Name]' with the appropriate license and your information. Feel free to expand this README with additional details or usage instructions as needed for your specific use case.
+Your Name Replace **'[License Name]'** and **'[Your Name]**' with the appropriate license and your information. Feel free to expand this README with additional details or usage instructions as needed for your specific use case.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](https://github.com/cypik/terraform-gcp-storage/blob/master/LICENSE) file for details.

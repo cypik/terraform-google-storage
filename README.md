@@ -85,7 +85,7 @@ Each module may have specific outputs. You can retrieve these outputs by referen
 - `name` : All attributes of the created `google_storage_bucket` resource.
 
 ## Examples
-    For detailed examples on how to use this module, please refer to the [EXAMPLE](https://github.com/cypik/terraform-gcp-storage/tree/master/example) directory within this repository.
+For detailed examples on how to use this module, please refer to the [EXAMPLE](https://github.com/cypik/terraform-gcp-storage/tree/master/example) directory within this repository.
 
 ## Author
 Your Name Replace **'[License Name]'** and **'[Your Name]**' with the appropriate license and your information. Feel free to expand this README with additional details or usage instructions as needed for your specific use case.

@@ -19,7 +19,7 @@ module "bucket_logs" {
 #####==============================================================================
 module "bucket" {
   source      = "./../"
-  name        = "appsss"
+  name        = "app"
   environment = "test"
   location    = "asia"
 

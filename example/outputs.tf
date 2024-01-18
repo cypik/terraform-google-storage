@@ -1,11 +1,11 @@
 output "bucket_id" {
   value       = module.bucket.bucket_id
-  description = "The ID of the s3 bucket."
+  description = "The ID of the GCP  bucket_id"
 }
 
 output "bucket_self_links" {
   value       = module.bucket.bucket_self_links
-  description = "URI of the GCS bucket."
+  description = "URI of the GCP bucket."
 }
 
 output "bucket_urls" {

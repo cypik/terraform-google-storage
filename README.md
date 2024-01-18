@@ -138,9 +138,9 @@ This project is licensed under the **MIT** License - see the [LICENSE](https://g
 
 | Name | Description |
 |------|-------------|
-| <a name="output_bucket_id"></a> [bucket\_id](#output\_bucket\_id) | List of GCS bucket IDs. |
-| <a name="output_bucket_info"></a> [bucket\_info](#output\_bucket\_info) | List of GCS buckets with their details. |
-| <a name="output_bucket_name"></a> [bucket\_name](#output\_bucket\_name) | List of GCS bucket names. |
-| <a name="output_bucket_self_links"></a> [bucket\_self\_links](#output\_bucket\_self\_links) | List of URIs for GCS buckets. |
-| <a name="output_bucket_urls"></a> [bucket\_urls](#output\_bucket\_urls) | List of base URLs for GCS buckets, in the format gs://<bucket-name> |
+| <a name="output_bucket_id"></a> [bucket\_id](#output\_bucket\_id) | List of GCP bucket IDs. |
+| <a name="output_bucket_info"></a> [bucket\_info](#output\_bucket\_info) | List of GCP buckets with their details. |
+| <a name="output_bucket_name"></a> [bucket\_name](#output\_bucket\_name) | List of GCP bucket names. |
+| <a name="output_bucket_self_links"></a> [bucket\_self\_links](#output\_bucket\_self\_links) | The URI of the created resource. |
+| <a name="output_bucket_urls"></a> [bucket\_urls](#output\_bucket\_urls) | The base URL of the bucket, in the format gs://<bucket-name>. |
 <!-- END_TF_DOCS -->

@@ -25,7 +25,7 @@ module "bucket" {
 
   #logging
   logging = {
-    log_bucket        = module.bucket_logs.id
+    log_bucket        = module.bucket_logs.bucket_id
     log_object_prefix = "gcs-log"
   }
   #cors

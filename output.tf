@@ -1,19 +1,24 @@
-output "id" {
+output "bucket_info" {
+  value       = google_storage_bucket.bucket[*]
+  description = "List of GCS buckets with their details."
+}
+
+output "bucket_id" {
   value       = join("", google_storage_bucket.bucket[*].id)
-  description = "The URI of the created resource."
+  description = "List of GCS bucket IDs."
 }
 
-output "name" {
+output "bucket_name" {
   value       = join("", google_storage_bucket.bucket[*].name)
-  description = "GCS bucket name."
+  description = "List of GCS bucket names."
 }
 
-output "self_link" {
+output "bucket_self_links" {
   value       = join("", google_storage_bucket.bucket[*].self_link)
-  description = "URI of the GCS bucket."
+  description = "List of URIs for GCS buckets."
 }
 
-output "url" {
+output "bucket_urls" {
   value       = join("", google_storage_bucket.bucket[*].url)
-  description = "The base URL of the bucket, in the format gs://<bucket-name>"
+  description = "List of base URLs for GCS buckets, in the format gs://<bucket-name>"
 }

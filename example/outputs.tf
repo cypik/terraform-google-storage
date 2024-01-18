@@ -1,19 +1,19 @@
-output "id" {
-  value       = module.bucket.id
+output "bucket_id" {
+  value       = module.bucket.bucket_id
   description = "The ID of the s3 bucket."
 }
 
-output "self_link" {
-  value       = module.bucket.self_link
+output "bucket_self_links" {
+  value       = module.bucket.bucket_self_links
   description = "URI of the GCS bucket."
 }
 
-output "url" {
-  value       = module.bucket.url
+output "bucket_urls" {
+  value       = module.bucket.bucket_urls
   description = "The base URL of the bucket, in the format gs://<bucket-name>"
 }
 
-output "name" {
-  value       = module.bucket.name
+output "bucket_name" {
+  value       = module.bucket.bucket_name
   description = "All attributes of the created `google_storage_bucket` resource."
 }

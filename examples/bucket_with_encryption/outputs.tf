@@ -9,7 +9,7 @@ output "bucket_self_links" {
 }
 
 output "bucket_name" {
-  value       = module.bucket.names
+  value       = module.bucket.bucket_name
   description = "The name of the GCP bucket, as well as all attributes of the created google_storage_bucket resource."
 }
 

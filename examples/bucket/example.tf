@@ -9,13 +9,9 @@ provider "google" {
 #####==============================================================================
 module "bucket" {
   source      = "./../../"
-  name        = "bucket-encryption"
+  name        = "bucket"
   environment = "test"
   location    = "us"
-  encryption = local.kms_key_enabled ? {
-    default_kms_key_name = module.encryption_key.key_id # Use the actual KMS key path
-  } : null                                              # Pass null if KMS is not enabled
-
   lifecycle_rules = [{
     action = {
       type = "Delete"
@@ -31,11 +27,15 @@ module "bucket" {
     data_locations : ["US-EAST4", "US-WEST1"]
   }
 
-  iam_members = [
-    {
-      role   = "roles/storage.admin"
-      member = "group:test-gcp-ops@test.blueprints.joonix.net"
-    }
-  ]
+  iam_members = [{
+    role   = "roles/storage.objectViewer"
+    member = "group:test-gcp-ops@test.blueprints.joonix.net"
+  }]
+
   autoclass = true
+  encryption = {
+    default_kms_key_name = null # Set to null explicitly if desired
+  }
+  set_hmac_access          = true
+  public_access_prevention = "enforced"
 }

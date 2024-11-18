@@ -19,7 +19,7 @@ resource "random_string" "bucket_suffix" {
 module "encryption_key" {
   source          = "cypik/kms/google"
   version         = "1.0.2"
-  name            = "simple-bucket-${random_string.bucket_suffix.result}" # Append index and random string to the bucket name
+  name            = "simple-bucket-${random_string.bucket_suffix.result}"
   location        = "us"
   prevent_destroy = false
 

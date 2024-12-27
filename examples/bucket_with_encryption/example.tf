@@ -4,15 +4,26 @@ provider "google" {
   zone    = "asia-northeast1-a"
 }
 
-#####==============================================================================
-##### bucket module call .
-#####==============================================================================
+module "kms_key" {
+  source          = "cypik/kms/google"
+  version         = "1.0.3"
+  name            = "app"
+  environment     = "test"
+  location        = "US"
+  prevent_destroy = true
+  keys            = ["test"]
+  role            = ["roles/owner"]
+}
+
+# Bucket module with encryption using the KMS key
 module "bucket" {
   source      = "./../../"
   name        = "bucket-encryption"
   environment = "test"
-  location    = "us"
-  encryption  = local.kms_key_enabled ? { default_kms_key_name = module.encryption_key.key_id } : null # Pass null if KMS is not enabled
+  location    = "US"
+  encryption = {
+    kms_key = module.kms_key.key_id
+  }
 
   lifecycle_rules = [{
     action = {
@@ -26,7 +37,7 @@ module "bucket" {
   }]
 
   custom_placement_config = {
-    data_locations : ["US-EAST4", "US-WEST1"]
+    data_locations = ["US-EAST4", "US-WEST1"]
   }
 
   iam_members = [

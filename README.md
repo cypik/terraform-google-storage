@@ -46,10 +46,7 @@ module "bucket" {
     member = "group:test-gcp-ops@test.blueprints.joonix.net"
   }]
 
-  autoclass = true
-  encryption = {
-    default_kms_key_name = null # Set to null explicitly if desired
-  }
+  autoclass                = true
   set_hmac_access          = true
   public_access_prevention = "enforced"
 }
@@ -62,8 +59,10 @@ module "bucket" {
   version     = "v1.0.2"
   name        = "bucket-encryption"
   environment = "test"
-  location    = "us"
-  encryption  = local.kms_key_enabled ? { default_kms_key_name = module.encryption_key.key_id } : null # Pass null if KMS is not enabled
+  location    = "US"
+  encryption = {
+    kms_key = module.kms_key.key_id
+  }
 
   lifecycle_rules = [{
     action = {
@@ -77,7 +76,7 @@ module "bucket" {
   }]
 
   custom_placement_config = {
-    data_locations : ["US-EAST4", "US-WEST1"]
+    data_locations = ["US-EAST4", "US-WEST1"]
   }
 
   iam_members = [
@@ -142,7 +141,7 @@ This project is licensed under the **MIT** License - see the [LICENSE](https://g
 | <a name="input_buckets_name"></a> [buckets\_name](#input\_buckets\_name) | Name of the resource. Provided by the client when the resource is created. | `list(string)` | `null` | no |
 | <a name="input_cors"></a> [cors](#input\_cors) | Set of maps of mixed type attributes for CORS values. See appropriate attribute types here: https://www.terraform.io/docs/providers/google/r/storage_bucket.html#cors. | `set(any)` | `[]` | no |
 | <a name="input_custom_placement_config"></a> [custom\_placement\_config](#input\_custom\_placement\_config) | Configuration for the bucket's custom location in a dual-region setup. Set to null for single or multi-region buckets. | <pre>object({<br>    data_locations = list(string)<br>  })</pre> | `null` | no |
-| <a name="input_encryption"></a> [encryption](#input\_encryption) | Specifies a Cloud KMS key for encrypting objects in the bucket. If set to 'null', a new keyring and key pair will be created. | <pre>object({<br>    default_kms_key_name = string<br>  })</pre> | `null` | no |
+| <a name="input_encryption"></a> [encryption](#input\_encryption) | Specifies a Cloud KMS key for encrypting objects in the bucket. If set to 'null', a new keyring and key pair will be created. | <pre>object({<br>    kms_key = optional(string, null)<br>  })</pre> | <pre>{<br>  "kms_key": null<br>}</pre> | no |
 | <a name="input_environment"></a> [environment](#input\_environment) | Environment (e.g. `prod`, `dev`, `staging`). | `string` | `""` | no |
 | <a name="input_extra_tags"></a> [extra\_tags](#input\_extra\_tags) | Additional tags for the resource. | `map(string)` | `{}` | no |
 | <a name="input_folders"></a> [folders](#input\_folders) | Map of lowercase unprefixed name => list of top level folder objects. | `map(list(string))` | `{}` | no |

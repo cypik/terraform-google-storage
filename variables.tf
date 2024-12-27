@@ -87,9 +87,11 @@ variable "autoclass" {
 
 variable "encryption" {
   type = object({
-    default_kms_key_name = string
+    kms_key = optional(string, null)
   })
-  default     = null
+  default = {
+    kms_key = null
+  }
   description = "Specifies a Cloud KMS key for encrypting objects in the bucket. If set to 'null', a new keyring and key pair will be created."
 }
 

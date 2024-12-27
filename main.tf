@@ -61,13 +61,12 @@ resource "google_storage_bucket" "bucket" {
   }
 
   dynamic "encryption" {
-    for_each = var.encryption.default_kms_key_name != null && var.encryption.default_kms_key_name != "" ? [1] : []
+    for_each = var.encryption.kms_key != null && var.encryption.kms_key != "" ? [1] : []
 
     content {
-      default_kms_key_name = var.encryption.default_kms_key_name
+      default_kms_key_name = var.encryption.kms_key
     }
   }
-
   dynamic "website" {
     for_each = length(keys(var.website)) == 0 ? toset([]) : toset([var.website])
     content {
